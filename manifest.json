@@ -15,9 +15,7 @@
     ],
     "web_accessible_resources": [
       {
-        "resources": [
-  
-        ],
+        
         "matches": ["https://chatgpt.com/"]
       }
     ],
