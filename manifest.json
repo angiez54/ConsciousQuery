@@ -13,12 +13,7 @@
         "js": ["contentScript.js"]
       }
     ],
-    "web_accessible_resources": [
-      {
-        
-        "matches": ["https://chatgpt.com/"]
-      }
-    ],
+
     "action": {
       "default_icon": {
         "16": "assets/ext-icon.png",
