@@ -3,13 +3,13 @@
     "version": "0.1.0",
     "description": "tracking your chat activity",
     "permissions": ["storage", "tabs"],
-    "host_permissions": ["https://chatgpt.com/"],
+    "host_permissions": ["https://chatgpt.com/*"],
     "background": {
       "service_worker": "background.js"
     },
     "content_scripts": [
       {
-        "matches": ["https://chatgpt.com/"],
+        "matches": ["https://chatgpt.com/*"],
         "js": ["contentScript.js"]
       }
     ],

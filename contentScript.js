@@ -41,6 +41,7 @@ function updateBadge() {
 // 4) Set up a MutationObserver to detect new user messages
 //    We'll look for <h5 class="sr-only">You said:</h5>
 const observer = new MutationObserver((mutations) => {
+  console.log("entered observer"); 
   for (const mutation of mutations) {
     // Iterate over all new nodes
     for (const addedNode of mutation.addedNodes) {
