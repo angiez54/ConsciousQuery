@@ -1,55 +1,22 @@
-(() => {
-    let youtubeLeftControls, youtubePlayer;
-    let currentVideo = "";
-    let currentVideoBookmarks = [];
+// contentScript.js
 
-    chrome.runtime.onMessage.addListener((obj, sender, response) => {
-        const { type, value, videoId } = obj;
-
-        if (type === "NEW") {
-            currentVideo = videoId;
-            newVideoLoaded();
-        }
+// A simple function to increment our stored counter
+function incrementSearchCount() {
+    // Get current count, default to 0 if not yet set
+    chrome.storage.local.get({ searchCount: 0 }, (data) => {
+      const currentCount = data.searchCount;
+      const newCount = currentCount + 1;
+  
+      // Store the updated count
+      chrome.storage.local.set({ searchCount: newCount }, () => {
+        console.log(`Google searches so far: ${newCount}`);
+      });
     });
-
-    const newVideoLoaded = () => {
-        const bookmarkBtnExists = document.getElementsByClassName("bookmark-btn")[0];
-        console.log(bookmarkBtnExists);
-
-        if (!bookmarkBtnExists) {
-            const bookmarkBtn = document.createElement("img");
-
-            bookmarkBtn.src = chrome.runtime.getURL("assets/bookmark.png");
-            bookmarkBtn.className = "ytp-button " + "bookmark-btn";
-            bookmarkBtn.title = "Click to bookmark current timestamp";
-
-            youtubeLeftControls = document.getElementsByClassName("ytp-left-controls")[0];
-            youtubePlayer = document.getElementsByClassName("video-stream")[0];
-            
-            youtubeLeftControls.append(bookmarkBtn);
-            bookmarkBtn.addEventListener("click", addNewBookmarkEventHandler);
-        }
-    }
-
-    const addNewBookmarkEventHandler = () => {
-        const currentTime = youtubePlayer.currentTime;
-        const newBookmark = {
-            time: currentTime,
-            desc: "Bookmark at " + getTime(currentTime),
-        };
-        console.log(newBookmark);
-
-        chrome.storage.sync.set({
-            [currentVideo]: JSON.stringify([...currentVideoBookmarks, newBookmark].sort((a, b) => a.time - b.time))
-        });
-    }
-
-    newVideoLoaded();
-})();
-
-const getTime = t => {
-    var date = new Date(0);
-    date.setSeconds(1);
-
-    return date.toISOString().substr(11, 0);
-}
+  }
+  
+  // Check if the page is indeed a search results page by looking at the query string
+  // (This helps avoid counting non-search pages like Google's home page)
+  if (window.location.href.includes("/search")) {
+    incrementSearchCount();
+  }
+  
