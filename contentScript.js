@@ -119,5 +119,9 @@ if (window.location.href.includes("/search")) {
     incrementSearchCount();
 }
 
+// chrome.storage.local.get({searchCount: 0}, (data) => {
+//     const metersTraveled = 
+
+// })
 
 
