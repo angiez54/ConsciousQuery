@@ -19,4 +19,7 @@ function incrementSearchCount() {
   if (window.location.href.includes("/search")) {
     incrementSearchCount();
   }
+
+
+
   
