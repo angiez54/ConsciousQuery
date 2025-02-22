@@ -9,10 +9,7 @@
     },
     "content_scripts": [
       {
-        "matches": [
-          "https://chatgpt.com/",
-          "*://www.google.com/search*"
-          ],
+        "matches": ["https://chatgpt.com/"],
         "js": ["contentScript.js"]
       }
     ],
