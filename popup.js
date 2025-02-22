@@ -1,12 +1,7 @@
-// adding a new bookmark row to the popup
-const addNewBookmark = () => {};
 
-const viewBookmarks = () => {};
-
-const onPlay = e => {};
-
-const onDelete = e => {};
-
-const setBookmarkAttributes =  () => {};
-
-document.addEventListener("DOMContentLoaded", () => {});
+document.addEventListener("DOMContentLoaded", () => {
+        chrome.storage.local.get({ searchCount: 0 }, (data) => {
+                const newCount = data.searchCount;
+                document.getElementById("bookmarks").textContent = newCount;
+        });
+});
