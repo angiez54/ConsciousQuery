@@ -3,8 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
         chrome.storage.local.get({ searchCount: 0 }, (data) => {
                 const newCount = data.searchCount;
                 document.getElementById("queries").textContent = "Queries: " + newCount;
-                let num = (newCount * 1.09) / 5280;
-                document.getElementById("yards").textContent = "Miles: " + num.toFixed(3); 
+                let num = (newCount * 1.09);
+                if (num < 5280) {
+                        document.getElementById("yards").textContent = "Yards Traveled: " + num.toFixed(2); 
+                } else {
+                        num = num / 5280;
+                        document.getElementById("yards").textContent = "Miles Traveld: " + num.toFixed(3); 
+                }
+        });
+
+        chrome.storage.local.get({ overviewCount: 0 }, (data) => {
+                const newOCount = data.overviewCount;
+                document.getElementById("overviews").textContent = "Gemini Overviews: " + newOCount;
         });
 });
 
