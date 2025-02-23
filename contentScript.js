@@ -2,7 +2,7 @@
   content-script.js
 ****************************/
 
-// We'll keep a local copy of the user's message count
+// //We'll keep a local copy of the user's message count
 // let promptCount = 0;
 
 // // 1) Create a floating badge to display the count
@@ -115,43 +115,116 @@ function incrementSearchCount() {
     }); 
 }
 
-if (window.location.href.includes("/search")) {
-    incrementSearchCount();
-}
 
+// function isAiOverviewDisplayed() {
+//   const aiContainer = document.querySelector('div.Fzsovc.cwYVJe.RJPOee');
+//   if (!aiContainer) return false;
 
-// contentScript.js
+//   const strongElement = aiContainer.querySelector('strong');
+//   return strongElement && strongElement.textContent.trim() === 'AI Overview';
+// }
 
-// 1) Utility function to check if the AI Overview is displayed
+// function incrementAICount() {
+//   chrome.storage.local.get({ overviewCount: 0 }, (data) => {
+//     const newCount = data.overviewCount + 1;
+//     chrome.storage.local.set({ overviewCount: newCount }, () => {
+//       console.log(`Overviews so far: ${newCount}`);
+//     });
+//   });
+// }
+
+// const observer = new MutationObserver(() => {
+//   if (isAiOverviewDisplayed()) {
+//     console.log('AI Overview is displayed!');
+//     incrementAICount();
+//     // Stop observing further changes
+//     observer.disconnect();
+//   }
+// });
+
+// observer.observe(document.body, { childList: true, subtree: true });
+
+/****************************
+  contentScript.js
+****************************/
+
+////////////////////////
+// 1) Detect AI Overview
+////////////////////////
+
+// Utility to find the AI Overview container and <strong>AI Overview</strong>
 function isAiOverviewDisplayed() {
-  // Query the div with the known classes
   const aiContainer = document.querySelector('div.Fzsovc.cwYVJe.RJPOee');
   if (!aiContainer) return false;
 
-  // Check for the <strong> element with text "AI Overview"
   const strongElement = aiContainer.querySelector('strong');
   return strongElement && strongElement.textContent.trim() === 'AI Overview';
 }
 
-// 2) The callback for MutationObserver
-function onMutations(mutations, observer) {
-  if (isAiOverviewDisplayed()) {
-    console.log('AI Overview is displayed.');
+///////////////////////
+// 2) Handle Counting
+///////////////////////
 
-    // Stop observing further changes
-    observer.disconnect();
-  }
+// A) Parse the current query from the URL
+function getCurrentSearchQuery() {
+  const urlObj = new URL(window.location.href);
+  return urlObj.searchParams.get('q') || '';
 }
 
-// 3) Create and start observing
-const observer = new MutationObserver(onMutations);
+// B) Increment the AI overview count
+function incrementAICount(callback) {
+  chrome.storage.local.get({ overviewCount: 0 }, (data) => {
+    const newCount = data.overviewCount + 1;
+    chrome.storage.local.set({ overviewCount: newCount }, () => {
+      console.log(`Overviews so far: ${newCount}`);
+      if (typeof callback === 'function') callback();
+    });
+  });
+}
 
-// Optional: do an initial check right away,
-// so if the AI overview is *already* visible on page load,
-// you can disconnect immediately.
+// C) Only increment if it's a brand-new query
+function handleAiOverviewIfNew() {
+  const currentQuery = getCurrentSearchQuery();
+  if (!currentQuery) return; // If there's no q= param, skip
+
+  // Retrieve the last query we incremented for AI
+  chrome.storage.local.get({ lastAiOverviewQuery: '' }, (res) => {
+    const lastQuery = res.lastAiOverviewQuery;
+
+    // If it's the same as last time, we're probably on a refresh => skip
+    if (lastQuery === currentQuery) {
+      console.log('[AI Overview] Same query => skipping increment on refresh.');
+      return;
+    }
+
+    // If it's different, increment once and record this query
+    incrementAICount(() => {
+      chrome.storage.local.set({ lastAiOverviewQuery: currentQuery }, () => {
+        console.log(`[AI Overview] Incremented for new query: "${currentQuery}".`);
+      });
+    });
+  });
+}
+
+////////////////////////////////////////////
+// 3) Observe DOM to detect AI Overview
+////////////////////////////////////////////
+
+const observer = new MutationObserver(() => {
+  if (isAiOverviewDisplayed()) {
+    console.log('AI Overview is displayed!');
+    handleAiOverviewIfNew();
+
+    // Stop observing further changes (so we only do this once per page load)
+    observer.disconnect();
+  }
+});
+
+// On page load, if the AI Overview is already visible, handle it immediately
 if (isAiOverviewDisplayed()) {
-  console.log('AI Overview was already visible on page load.');
-  // No need to observe further
+  console.log('AI Overview is already visible on page load.');
+  handleAiOverviewIfNew();
 } else {
+  // Otherwise, watch for it to appear
   observer.observe(document.body, { childList: true, subtree: true });
 }

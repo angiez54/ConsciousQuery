@@ -1,15 +1,15 @@
 {
-    "name": "ChatTracker",
-    "version": "0.1.0",
+    "name": "ConscienceQuery",
+    "version": "1.0.0",
     "description": "tracking your chat activity",
     "permissions": ["storage", "tabs"],
-    "host_permissions": ["*://www.google.com/search*"],
+    "host_permissions": ["*://www.google.com/search*", "https://chatgpt.com/*"],
     "background": {
       "service_worker": "background.js"
     },
     "content_scripts": [
       {
-        "matches": ["*://www.google.com/search*"],
+        "matches": ["*://www.google.com/search*", "https://chatgpt.com/*"],
         "js": ["contentScript.js"]
       }
     ],
