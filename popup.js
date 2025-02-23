@@ -1,23 +1,13 @@
 
 document.addEventListener("DOMContentLoaded", () => {
+        let miles = 0;
         chrome.storage.local.get({ searchCount: 0 }, (data) => {
                 const newCount = data.searchCount;
-                document.getElementById("queries").textContent = newCount;
-                let num = newCount * 1.09;
-                // if (num < 5280) {
-                //         document.getElementById("yards").textContent = "Yards Traveled: " + num.toFixed(2); 
-                // } else {
-                        num = num / 5280;
-                        document.getElementById("yards").textContent = num.toFixed(3); 
-                // }
+                document.getElementById("queries").textContent = newCount; 
+                
 
-                num = newCount * 0.2;
-                // if (num < 1000) {
-                        document.getElementById("q-emissions").textContent = num.toFixed(1);
-                // } else {
-                //         num = num / 1000;
-                //         document.getElementById("q-emissions").textContent = "Query Emissions: " + num.toFixed(3) + "kgs";
-                // }
+                miles = newCount * 0.2;
+                document.getElementById("q-emissions").textContent = miles.toFixed(1);
 
 
         });
@@ -27,12 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("overviews").textContent = newOCount;
 
                 let num = newOCount * 4.3;
-                // if (num < 1000) {
+
+                miles = (miles + num) / 400;
+                document.getElementById("yards").textContent = miles.toFixed(3);
+                
                 document.getElementById("ai-emissions").textContent = num.toFixed(1);
-                // } else {
-                //         num = num / 1000;
-                //         document.getElementById("ai-emissions").textContent = "AI Emissions: " + num.toFixed(3) + "kgs";
-                // }
 
                 num = newOCount / 15;
                 document.getElementById("streams").textContent = num.toFixed(2);
