@@ -22,7 +22,9 @@ The increasing amounts of AI integration within our day to day lives it makes it
 ┣ 📜 background.js      # Tracks search queries & tab activity
 ┣ 📜 contentScript.js   # Observes changes in Google and ChatGPT
 ┣ 📜 icon_128.png       # Extension icon
-┣ 📜 popup.html         # (Optional) UI for displaying data
+┣ 📜 icon_16.png       # Extension icon
+┣ 📜 icon_32.png       # Extension icon
+┣ 📜 popup.html         # UI for displaying data
 ┣ 📜 README.md          # Documentation
 ```
 
