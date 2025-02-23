@@ -1,5 +1,5 @@
 {
-    "name": "ConscienceQuery",
+    "name": "ConsciousQuery",
     "version": "1.0.0",
     "description": "tracking your chat activity",
     "permissions": ["storage", "tabs"],
@@ -14,10 +14,13 @@
         "css": ["popup.css"]
       }
     ],
-
+    "icons": {
+        "16": "icon_16.png",
+        "32": "icon_32.png",
+        "128": "icon_128.png"
+    },
     "action": {
-      
-      "default_title": "My Chat Activity",
+      "default_title": "ConsciousQuery",
       "default_popup": "popup.html"
     },
     "manifest_version": 3
