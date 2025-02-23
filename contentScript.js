@@ -119,9 +119,39 @@ if (window.location.href.includes("/search")) {
     incrementSearchCount();
 }
 
-// chrome.storage.local.get({searchCount: 0}, (data) => {
-//     const metersTraveled = 
 
-// })
+// contentScript.js
 
+// 1) Utility function to check if the AI Overview is displayed
+function isAiOverviewDisplayed() {
+  // Query the div with the known classes
+  const aiContainer = document.querySelector('div.Fzsovc.cwYVJe.RJPOee');
+  if (!aiContainer) return false;
 
+  // Check for the <strong> element with text "AI Overview"
+  const strongElement = aiContainer.querySelector('strong');
+  return strongElement && strongElement.textContent.trim() === 'AI Overview';
+}
+
+// 2) The callback for MutationObserver
+function onMutations(mutations, observer) {
+  if (isAiOverviewDisplayed()) {
+    console.log('AI Overview is displayed.');
+
+    // Stop observing further changes
+    observer.disconnect();
+  }
+}
+
+// 3) Create and start observing
+const observer = new MutationObserver(onMutations);
+
+// Optional: do an initial check right away,
+// so if the AI overview is *already* visible on page load,
+// you can disconnect immediately.
+if (isAiOverviewDisplayed()) {
+  console.log('AI Overview was already visible on page load.');
+  // No need to observe further
+} else {
+  observer.observe(document.body, { childList: true, subtree: true });
+}
