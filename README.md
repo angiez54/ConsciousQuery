@@ -1,18 +1,14 @@
-# Conscious Query
----
+# Conscious Query- A Chrome Extension  
 
-### 📌 ConscienceQuery - A Chrome Extension  
+## 🌱 Track Your Searches & Their Environmental Impact  
 
-#### 🌱 Track Your Searches & Their Environmental Impact  
-
-**ConscienceQuery** is a Chrome extension that monitors your search activity on Google and ChatGPT, tracking the number of queries made and providing insights into their environmental impact.  
+The increasing amounts of AI integration within our day to day lives it makes it harder to see the environmental impact of our searches. **ConscienceQuery** is a Chrome extension that monitors your search activity on Google, tracking the number of queries made with or without AI. This data is converted into a summary which shows the total enviromental cost for your searches.
 
 ---
 
 ## 🚀 Features  
 
-✅ **Search Tracking** - Monitors Google search queries and ChatGPT interactions.  
-✅ **Live Counter** - Displays a floating counter of total searches.  
+✅ **Search Tracking** - Monitors Google search queries and Gemini interactions.  
 ✅ **Environmental Impact Metrics** - Calculates the estimated CO₂ emissions generated from search activities.  
 ✅ **Background Monitoring** - Runs in the background and logs data persistently.  
 
@@ -46,24 +42,16 @@
    - Select the folder where you saved the extension files.  
 
 4️⃣ **Start Tracking!**  
-   - Open Google or ChatGPT and start searching!  
+   - Open Google and start searching!  
    - The extension will count searches and estimate environmental effects.  
 
 ---
 
-## 🛠️ How It Works  
-
-### 🌍 Environmental Impact Calculation  
+## 🌍 Environmental Impact Calculation  
 
 - Each Google search consumes energy, mainly due to data center operations.  
 - The extension estimates **CO₂ emissions per search** based on studies (e.g., **0.2g CO₂ per query**).  
 - Over time, it tracks your **carbon footprint from searches**.  
-
-### 🕵️‍♂️ Background Tracking  
-
-- The **background script (`background.js`)** monitors tab activity and URL changes to detect new searches.  
-- The **content script (`contentScript.js`)** observes page changes to detect when queries are made.  
-- Data is stored locally using **Chrome Storage API**.  
 
 ---
 
@@ -84,12 +72,6 @@ The extension requires the following permissions:
 🚀 **Visual Analytics** - Graphs to display environmental impact over time.  
 🌍 **Additional Search Engines** - Support for Bing, DuckDuckGo, etc.  
 📊 **Detailed Carbon Footprint Reports** - Breakdowns of daily/weekly search impact.  
-
----
-
-## 🤝 Contributing  
-
-Want to improve **ConscienceQuery**? Feel free to fork the repository, submit pull requests, or suggest ideas!  
 
 ---
 
