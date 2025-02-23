@@ -2,7 +2,21 @@
 document.addEventListener("DOMContentLoaded", () => {
         chrome.storage.local.get({ searchCount: 0 }, (data) => {
                 const newCount = data.searchCount;
-                document.getElementById("bookmarks").textContent = newCount;
-                document.getElementById("meters").textContent = newCount; 
+                document.getElementById("queries").textContent = "Queries: " + newCount;
+                let num = (newCount * 1.09) / 5280;
+                document.getElementById("yards").textContent = "Miles: " + num.toFixed(3); 
         });
 });
+
+
+// 1 searchCount = 1 searchCount
+// 1 yard = 1.09 searchCount
+// 0.2 grams of CO2 per Google search
+// 4.3 grams of CO2 per Google AI overview
+        // 15 queries = watching one hour of videos
+        // 16 queries = boiling one kettle
+        // 35 queries = 500 mL of water
+        // 139 queries = one load of laundry
+        // 92,593 queries = round-trip flight SF to SEA
+// 3 watt-hours = 1 searchCount
+// 
