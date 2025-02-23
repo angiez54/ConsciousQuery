@@ -154,7 +154,7 @@ function incrementSearchCount() {
 
 // Utility to find the AI Overview container and <strong>AI Overview</strong>
 function isAiOverviewDisplayed() {
-  const aiContainer = document.querySelector('div.Fzsovc.cwYVJe.RJPOee');
+  const aiContainer = document.querySelector('div.Fzsovc');
   if (!aiContainer) return false;
 
   const strongElement = aiContainer.querySelector('strong');

@@ -1,18 +1,14 @@
-
-
 .container {
   width: 400px;
-  height: 1000px;
+  height: 580px;
   color: #314d3e;
   border: none;
 }
 
 .purplecontainer {
   width: 100%;
-  height: 800px;
+  height: 535px;
   background-color: rgba(102, 119, 247, 0.12);
-  /* align-content: center; */
-  /* opacity: 0.12; */
   border: none;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -30,14 +26,24 @@
 }
 
 .title {
+  float: left;
+  width: 45px;
   color: rgb(43, 43, 67);
   font-family: "Days One", serif;
-  font-size: 38px;
+  font-size: 30px;
   font-weight: 400;
-  line-height: 51px;
+  line-height: 40px;
   letter-spacing: 0.01em;
   text-align: right;
   text-shadow: #6677F7 1px 3px 7px;
+}
+
+img {
+  float: left;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  width: 35px;
 }
 
 .subtitle {
@@ -104,7 +110,7 @@
 }
 
 .datacontainer {
-  float: left;
+  float: right;
   width: 25%;
   height: 70px;
   margin-left: 5px;
@@ -204,4 +210,15 @@
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 2;
+}
+
+.itemtext {
+  color: rgb(0, 0, 0);
+  opacity: 70%;
+  font-family: Days One;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 43px;
+  letter-spacing: 0%;
+  text-align: left;
 }
