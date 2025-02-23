@@ -46,6 +46,18 @@ img {
   width: 35px;
 }
 
+.car {
+  border-radius: 4px;
+  padding-bottom: 30px;
+  width: 100px;
+}
+
+.plant {
+  border-radius: 4px;
+  padding-top: 10px;
+  width: 75px;
+}
+
 .subtitle {
   color: #FFFFFF;
   font-family: "Metrophobic", serif;
@@ -221,4 +233,11 @@ img {
   line-height: 43px;
   letter-spacing: 0%;
   text-align: left;
+}
+
+.row {
+  display: flex;               /* enable flex layout */
+  align-items: left;         /* vertically center items */
+  justify-content: space-between; 
+  /* "space-between" pushes the first item to the left and the second to the right */
 }
