@@ -53,9 +53,11 @@ img {
 }
 
 .plant {
+  margin-left: 45px;
   border-radius: 4px;
   padding-top: 10px;
-  width: 75px;
+  width: 85px;
+  height: 95px;
 }
 
 .subtitle {
@@ -147,7 +149,7 @@ img {
   clear: both;
 }
 
-.smallwhitecontainerleft {
+/* .smallwhitecontainerleft {
   float: left;
   width: 38%; 
   height: 90px;
@@ -157,15 +159,18 @@ img {
   margin-right: 8.5px;
   box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0.87);
-}
+} */
 
 .smallwhitecontainerright {
-  float: left;
-  width: 38%; 
+  float: right;
+  width: 40%; 
   height: 90px;
   border-radius: 28px;
-  padding: 10px;
-  margin-right: 5px;
+  padding-left: 25px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right: 25px;
   box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0.87);
 }

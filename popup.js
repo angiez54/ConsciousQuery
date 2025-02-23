@@ -29,13 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 num = newOCount / 16;
                 document.getElementById("kettle").textContent = num.toFixed(2);
 
-                num = newOCount / 35;
+                num = newOCount / 70;
                 document.getElementById("water").textContent = num.toFixed(2);
 
                 num = newOCount / 139;
                 document.getElementById("laundry").textContent = num.toFixed(2);
 
-                num = newOCount / 13227;
+                num = (newOCount / 13227) * 60;
                 document.getElementById("plane").textContent = num.toFixed(2);
 
                 num = newOCount * 3;
