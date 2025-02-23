@@ -1,7 +1,7 @@
 {
     "name": "ConsciousQuery",
     "version": "1.0.0",
-    "description": "tracking your chat activity",
+    "description": "Track your Chrome and AI query activity to become more concious about environmental impact.",
     "permissions": ["storage", "tabs"],
     "host_permissions": ["*://www.google.com/search*", "https://chatgpt.com/*"],
     "background": {
