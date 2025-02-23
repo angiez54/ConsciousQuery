@@ -7,35 +7,39 @@
   </style>
 
 
+
+
 <link href="popup.css" rel="stylesheet" type="text/css" />
 <script type="module" src="popup.js"></script>
 
 <div class="container">
   <div>
-    <div class="title">Chrome Tracker</div>
-
+    <div class="column">
+      <img src="icon_128.png" > 
+      <div class="title">ConsciousQuery</div>
+    </div>
     <div class="purplecontainer">
       <div class="subtitle-bar">
         <div class="subtitle"> User Activity</div>
       </div>
       <div class="largewhitecontainer"> 
         <div class="statstitle"> Miles Traveled Based on CO2 </div>
-        <div class="largedata"> 28.20 </div> 
+        <div id="yards"class="largedata"></div> 
       </div>
       
       <div class="column">
         <div class="datacontainer">
-            <div class="basictext">Queries<br> Today</div>
-            <div class="datatext">16</div>
+            <div class="basictext">Total </br>Queries</div>
+            <div id="queries" class="datatext"></div>
         </div>
         <div class="datacontainer">
           <div class="basictext">Gemini <br>Overview</div>
-          <div class="datatext">3</div>
+          <div id="overviews"class="datatext"></div>
         </div>
-        <div class="datacontainer">
+        <!-- <div class="datacontainer">
           <div class="basictext">Temp <br> Data</div>
           <div class="datatext">0</div>
-        </div>
+        </div> -->
       </div>
       
         <div class="subtitle-bar">
@@ -43,16 +47,16 @@
         </div>
         <div class="column">
           <div class="smallwhitecontainerleft">
-            <div class="statstitle"> Query Overview </div>
+            <div class="statstitle"> Query Emissions </div>
             <div class="column">
-              <div class="datatext">16</div>
+              <div id="q-emissions" class="datatext">16</div>
               <div class="basictext">grams of CO2</div>
             </div>
           </div>
           <div class="smallwhitecontainerright">
-            <div class="statstitle"> AI Overview </div>
+            <div class="statstitle"> AI Emissions </div>
             <div class="column">
-              <div class="datatext">16</div>
+              <div id="ai-emissions"class="datatext"></div>
               <div class="basictext">grams of CO2</div>
             </div>
         </div>
@@ -60,13 +64,23 @@
 
         <div class="grid"> 
           <div class="item.a"> Hours of videos </br>
-            Temp item
+            <div id="streams"class="itemtext"></div>
           </div>
-          <div class="item.b"> mL of water </div>
-          <div class="item.c"> Kettles boiled </div>
-          <div class="item.d"> Loads of laundry </div>
-          <div class="item.e"> Hours flown </div>
-          <div class="item.f"> Watt hours </div>
+          <div class="item.d"> Loads of laundry </br>
+            <div id="laundry"class="itemtext"></div>
+          </div> 
+          <div class="item.c"> Kettles boiled </br>
+            <div id="kettle"class="itemtext"></div>
+          </div> 
+          <div class="item.b"> mL of water</br>
+            <div id="water"class="itemtext"></div>
+          </div> 
+          <div class="item.e"> Hours flown </br>
+            <div id="plane"class="itemtext"></div>
+          </div>
+          <div class="item.f"> Watt hours </br>
+            <div id="watt"class="itemtext"></div>
+          </div>
         </div>
       <div id="queries"></div>
       <div  id="yards"> </div>
