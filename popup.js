@@ -17,6 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // 16 queries = boiling one kettle
         // 35 queries = 500 mL of water
         // 139 queries = one load of laundry
-        // 92,593 queries = round-trip flight SF to SEA
+        // 92,593 queries = round-trip flight SF to SEA (7 hours)
 // 3 watt-hours = 1 searchCount
 // 

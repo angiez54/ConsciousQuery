@@ -10,15 +10,12 @@
     "content_scripts": [
       {
         "matches": ["*://www.google.com/search*"],
-        "js": ["contentScript.js"]
+        "js": ["contentScript.js"],
+        "css": ["popup.css"]
       }
     ],
 
     "action": {
-      "default_icon": {
-        "16": "icon_16.png",
-        "32": "icon_32.png"
-      },
       "default_title": "My Chat Activity",
       "default_popup": "popup.html"
     },
