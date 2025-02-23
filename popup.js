@@ -65,4 +65,3 @@ document.addEventListener("DOMContentLoaded", () => {
         // 139 queries = one load of laundry
         // 13,227 queries = 1 hours of flight
         // 3 watt-hours = 1 ai query
-// 
